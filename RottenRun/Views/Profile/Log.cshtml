@@ -1,0 +1,23 @@
+﻿@using DeliveryShop.Database.Models
+@{
+    ViewData["Title"] = "Home Page";
+    List<Products> list = Model;
+}
+<link href="css/log.css" rel="stylesheet" />
+<div class="div-log">
+    <h1>Авторизация</h1>
+    <form method='post'>
+        <p>
+            <label>Логин</label><br/>
+            <input name='login'/>
+        </p>
+        <p>
+            <label>Пароль</label><br/>
+            <input type='password' name='password'/>
+        </p>
+        <input type='submit' value='Войти' asp-action="Log" asp-controller="Profile"/>
+        <input type='submit' value='Отмена' formmethod="get" asp-action="Index" asp-controller="Home"/>
+        <input type='submit' value='Регистрация' formmethod="get" asp-action="Reg" asp-controller="Registration"/>
+    </form>
+    
+</div>

@@ -1,0 +1,35 @@
+﻿@using DeliveryShop.Database.Models
+@{
+    ViewData["Title"] = "Home Page";
+    List<Orders> list = Model;
+}
+<link href="css/index.css" rel="stylesheet" />
+<div class="main">
+    <h1>Корзина</h1>
+    <ul class="products clearfix">
+        @{
+            foreach (var item in list)
+            {
+                <li class="product-wrapper">
+                    <a href="" class="product">
+                        <div class="product-photo">
+                            <img alt="" src="@item.Basket.Product.Image"/>
+                        </div>
+                        <p class="info-text"><strong>@item.Basket.Product.Name</strong></p>
+                        <div class="price">
+                            <span class="price">@item.Basket.Product.Price Р</span>
+                        </div>
+                        <div class="count">
+                            <label>Кол-во</label>
+                            <span class="price">@item.Basket.Count</span>
+                        </div>
+                        <a class="nav-link text-dark favorite-container">
+                            <i class="icon1 fa fa-trash fa-2x"></i>
+                        </a>
+
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>

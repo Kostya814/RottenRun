@@ -1,0 +1,31 @@
+﻿@using DeliveryShop.Database.Models
+@{
+    ViewData["Title"] = "Home Page";
+    List<Products> list = Model;
+}
+<link href="css/index.css" rel="stylesheet" />
+<div class="main">
+	<h1>Каталог</h1>
+	<ul class="products clearfix">
+		@{
+			foreach (var item in list)
+			{
+				<li class="product-wrapper">
+					<a href="" class="product">
+						<div class="product-photo">
+							<img alt="" src="@item.Image"/>
+						</div>
+						<p class="info-text"><strong>@item.Name</strong></p>
+						<div class="price">
+							<span class="price">@item.Price Р</span>
+						</div>
+						<form method="post">
+							<input id="id" name="id" type="number" value="@item.ID"/>
+							<button class="position-absolute bottom-0 w-100 btn btn-outline-dark btn-lg" type="submit" asp-action="AddToCart">В корзину </button>
+						</form>
+					</a>
+				</li>
+			}
+		}
+	</ul>
+</div>

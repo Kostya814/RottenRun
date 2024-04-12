@@ -1,0 +1,14 @@
+﻿@using DeliveryShop.Database.Models
+@{
+    ViewData["Title"] = "Home Page";
+    List<Products> list = Model;
+}
+<link href="css/log.css" rel="stylesheet" />
+<div class="div-log">
+    <h1>Выход из аккаунта</h1>
+    <p>Вы уверены что хотите выйти?</p>
+    <form method="post">
+        <input type="submit" value="Выйти" asp-controller="Profile" asp-action="LogOut"/>
+        <input type="submit" value="Отмена" formmethod="get" asp-controller="Home" asp-action="Index"/>
+    </form>
+</div>
