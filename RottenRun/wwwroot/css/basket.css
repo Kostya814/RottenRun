@@ -1,0 +1,138 @@
+﻿.main-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.pay-method{
+    border-top:1px solid black ;
+    margin-bottom: 50px;
+}
+.price-info{
+    border-top:1px solid black ;
+}
+.full-price{
+    display: flex;
+    justify-content: space-between;
+}
+.full-price span{
+    font-family: Arial, sans-serifl;
+    font-weight: bold;
+    justify-self: end;
+    margin-right: 5%;
+}
+.price-info p{    
+    margin-left: 10%;
+}
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    border-radius: 10px;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    text-align: center;
+}
+.btn-pay{
+    
+    width: 100%;
+}
+.pay-container{
+    background-color: white;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+.pay-div{
+    height: auto;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+}
+.div-count{
+    display: flex;
+    width: 120px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+    align-items: center;
+}
+.btn1{
+    border: 1px solid black;
+    background-color: #a39f9f;
+}
+.icon-trash:hover{
+    color: red;
+}
+.list-basket form:first-child{
+    .item{
+        border-top: none;
+    }
+}
+.item{
+    border-top: dashed black;    
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 10px;
+    gap: 10%;
+}
+.price{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.price span{
+    font-family: Arial, sans-serifl;
+    font-weight: bold;
+    margin-right: 5%;
+    justify-self: start;
+}
+.item p{
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 15px;
+}
+.item-price{
+    width: 70px;
+    align-content: center;
+}
+.item-info{
+    width: 130px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: start;
+    gap: 0px;
+}
+.container-body{
+    height: 100%;
+}
+.list-basket{
+    top: 30%;
+    padding: 20px;
+    overflow-y: auto;
+    height: 80%;
+}
+
+.basket-container{
+    width: 100%;
+    background-color: white;
+}

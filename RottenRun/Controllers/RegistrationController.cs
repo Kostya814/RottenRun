@@ -18,17 +18,19 @@ public class RegistrationController : Controller
     }
 
     [HttpPost]
-    public IActionResult Reg(string login, string password,string email, string name )
+    public IActionResult Reg(string login, string password,string email, string name, string repeatPassword)
     {
+        if (password != repeatPassword) return RedirectToAction("Reg");
         
         var newUser = new Users()
-        {
+        {   
             Login = login,
             Email = email,
             Password = password,
             Name = name,
             Role = _context.Roles.FirstOrDefault()
         };
+
         _context.Users.Add(newUser);
         _context.SaveChanges();
         return RedirectToAction("Index", "Home");

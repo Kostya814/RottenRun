@@ -5,10 +5,14 @@ namespace DeliveryShop.Database;
 
 public class DBContext:DbContext
 {
+   
     public DBContext()
     {
         Database.Migrate();
     }
+
+   
+
     public DbSet<Addresses> Addresses { get; set; }
     public DbSet<Basket> Baskets { get; set; }
     public DbSet<Categories> Categories { get; set; }

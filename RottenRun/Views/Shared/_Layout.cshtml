@@ -12,7 +12,7 @@
     </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RottenRun</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -24,10 +24,9 @@
                     <li class="nav-item">
                         <div class="nav-link d1">
                             <form class="form-search" method="get" asp-controller="Home" asp-action="Index">
-                                
-                                 <input id="searchText" name="textSearch" required type="text" placeholder="Искать здесь...">
+                                <input id="searchText" name="textSearch" required type="text" placeholder="Искать здесь...">
                                 <button class="btn btn-dark" type="submit">
-                                        <span class="fa fa-search "></span>
+                                    <span class="fa fa-search "></span>
                                 </button>
                             </form >
                         </div>
@@ -44,17 +43,33 @@
                         <p>Избранное</p>
                         <i class="icon fa fa-heart fa-2x"></i>
                     </a>
-                    <a class="nav-link text-dark favorite-container" asp-controller="Profile" asp-action="Index">
+                    <a class="nav-link text-dark favorite-container" onclick="clickProfile()">
                         <p>Профиль</p>
                         <i class="icon fa fa-user fa-2x"></i>
                     </a>
-                    </ul>
+                </ul>
             </div>
         </div>
     </nav>
 </header>
-<div class="container">
-    <main role="main" class="pb-3">
+<div id="containerProfile" class="container-profile" style="height: 80vh">
+    <div class="profile-modal">
+            <form class="modal-content-profile" id="contentProfile" method="get">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="fa fa-user">
+                    </i>
+                      Аккаунт
+                </button>
+                <button class="btn btn-outline-secondary" type="submit" >
+                    <i class="fa fa-barcode" style="margin-right:4px ">
+                    </i>Заказы
+                </button>
+                <button class="btn btn-outline-dark" type="submit" asp-action="LogOut" asp-controller="Profile">Выйти</button>
+            </form>
+    </div>
+</div>
+<div class="container mt-3" style="height: 80vh">
+    <main role="main" class="pb-3" style="height: 100%">
         @RenderBody()
     </main>
 </div>

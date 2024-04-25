@@ -29,10 +29,11 @@ public class ProfileController : Controller
         if (ModelState.IsValid)
         {
             Users? user = _context.Users.FirstOrDefault(p => p.Login == login && p.Password == password);
-            if(user != null)
+            if(user == null) return RedirectToAction("Index");
                 Response.Cookies.Append("user",JsonConvert.SerializeObject(user));
+            
         }
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index","Home");
     }
     [HttpGet]
     public IActionResult LogOut()

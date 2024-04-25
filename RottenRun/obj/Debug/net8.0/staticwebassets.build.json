@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6wFdvnzNnvzO3dZ/r4lYoPWCAUC2PuPkEUFn89EWwQk=",
+  "Hash": "qSQ/EeNLr3iEIcwvB6xnglikDtylsJYcTU78wNoOJK0=",
   "Source": "RottenRun",
   "BasePath": "_content/RottenRun",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RottenRun.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\basket.css",
+      "SourceId": "RottenRun",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\",
+      "BasePath": "_content/RottenRun",
+      "RelativePath": "css/basket.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\basket.css"
     },
     {
       "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\index.css",
@@ -112,6 +131,25 @@
       "OriginalItemSpec": "wwwroot\\css\\profile.css"
     },
     {
+      "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\reg.css",
+      "SourceId": "RottenRun",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\",
+      "BasePath": "_content/RottenRun",
+      "RelativePath": "css/reg.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\reg.css"
+    },
+    {
       "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\site.css",
       "SourceId": "RottenRun",
       "SourceType": "Discovered",
@@ -148,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\js\\basket.js",
+      "SourceId": "RottenRun",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\",
+      "BasePath": "_content/RottenRun",
+      "RelativePath": "js/basket.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\basket.js"
     },
     {
       "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\js\\site.js",

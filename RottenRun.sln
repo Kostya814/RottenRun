@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RottenRun", "RottenRun\RottenRun.csproj", "{DD20F326-D084-4010-80F3-BEA62A4950D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{6C1D8E0D-8C50-41F6-9B8A-C7EF49551507}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,9 +12,5 @@ Global
 		{DD20F326-D084-4010-80F3-BEA62A4950D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD20F326-D084-4010-80F3-BEA62A4950D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD20F326-D084-4010-80F3-BEA62A4950D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C1D8E0D-8C50-41F6-9B8A-C7EF49551507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C1D8E0D-8C50-41F6-9B8A-C7EF49551507}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C1D8E0D-8C50-41F6-9B8A-C7EF49551507}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C1D8E0D-8C50-41F6-9B8A-C7EF49551507}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

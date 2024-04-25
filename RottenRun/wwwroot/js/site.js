@@ -1,4 +1,17 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿var IsOpen =false;
+var IsClick = false;
+function clickProfile(){
+        document.getElementById('containerProfile').style.display = "block";
+        IsClick = true;
+        IsOpen=true;
+   
+}
+document.addEventListener('click', function(event) {
+    var form = document.getElementById('contentProfile');
+    if(!form.contains(event.target) && IsOpen && !IsClick) {
+        document.getElementById('containerProfile').style.display = "none";
+        IsOpen = false;
+        
+    }
+    IsClick = false;
+});

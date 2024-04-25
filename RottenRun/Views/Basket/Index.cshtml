@@ -1,35 +1,87 @@
 ﻿@using DeliveryShop.Database.Models
 @{
     ViewData["Title"] = "Home Page";
+    var allPrice = ViewBag.AllPrice;
     List<Orders> list = Model;
 }
-<link href="css/index.css" rel="stylesheet" />
-<div class="main">
-    <h1>Корзина</h1>
-    <ul class="products clearfix">
-        @{
-            foreach (var item in list)
-            {
-                <li class="product-wrapper">
-                    <a href="" class="product">
-                        <div class="product-photo">
-                            <img alt="" src="@item.Basket.Product.Image"/>
-                        </div>
-                        <p class="info-text"><strong>@item.Basket.Product.Name</strong></p>
-                        <div class="price">
-                            <span class="price">@item.Basket.Product.Price Р</span>
-                        </div>
-                        <div class="count">
-                            <label>Кол-во</label>
-                            <span class="price">@item.Basket.Count</span>
-                        </div>
-                        <a class="nav-link text-dark favorite-container">
-                            <i class="icon1 fa fa-trash fa-2x"></i>
-                        </a>
-
-                    </a>
-                </li>
-            }
-        }
-    </ul>
+<link href="~/css/basket.css" rel="stylesheet"/>
+<div class="container-body">
+    <div class="main-container">
+        <div class="basket-container">
+            <div class="p-2">
+                <h2>Корзина</h2>              
+            </div> 
+            <div class="list-basket" id="listbasket">
+                @{
+                    foreach (var basket in list)
+                    {
+                        <form method="post" asp-action="RemoveBasket">
+                            <div class="item">
+                                <div class="mr-1"><img class="rounded" src="@basket.Basket.Product.Image"  width="100"></div>
+                                <div class="item-info">
+                                    <p>@basket.Basket.Product.Name</p>
+                                    <p>@basket.Basket.Product.Specifications</p>
+                                </div>
+                                <div class="div-count">
+                                    <input name="id" style="display: none" value="@basket.Basket.Id">
+                                    <button class="btn" type="submit" asp-action="RemoveCount" ><i class="icon fa fa-minus fa-1x"></i></button>
+                                    <p><strong>@basket.Basket.Count</strong></p>
+                                    <button class="btn" type="submit" asp-action="AddCount"><i class="icon fa fa-plus fa-1x"></i></button>
+                                </div>
+                                <div class="item-price">
+                                    <p>@basket.Basket.Product.Price ₽</p>
+                                </div>
+                                <button class="btn btnDelete"  type="button" asp-action="RemoveBasket" >
+                                    <i class="icon-trash fa fa-trash fa-2x"></i>
+                                </button>
+                            </div>
+                        </form>
+                    }
+                }
+            </div>  
+        </div>
+        <div class="modal" id="confirmModal">
+            <div class="modal-content">
+                <p>Вы уверены, что хотите выполнить это действие?</p>
+                <button class="btn btn-outline-danger" id="confirmBtn">Подтвердить</button>
+                <button class="btn btn-outline-dark" style="margin-top: 10px" id="cancelBtn">Отмена</button>
+            </div>
+        </div>
+        <form style="width: 40%;">
+        <div class="pay-container">
+            <div class="p-2">
+                <h2>Оплата</h2>
+            </div>
+            <div class="pay-div-info">
+                <div class="pay-method">
+                    <h4 class="m-3">Способ оплаты</h4>
+                    
+                </div>
+                <div class="price-info">
+                    <h4 class="m-3">Стоимсоть товаров</h4>
+                    <div class="price">
+                        <p>Стоимость продуктов:</p>
+                        <span>@allPrice ₽</span>
+                    </div>
+                    <div class="price">
+                        <p>Доставка:</p>
+                        <span>500₽</span>
+                    </div>
+                    <div class="price">
+                        <p>Скидка</p>
+                        <span>-500₽</span>
+                    </div>
+                    <div class="full-price">
+                        <p>Итого к оплате: </p>
+                        <span>@{allPrice+=500;} @allPrice₽</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pay-div">
+                <button class="btn btn-outline-dark btn-pay" type="submit" asp-action="">Оформить заказ</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    <script src="~/js/basket.js"></script>
 </div>
