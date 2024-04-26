@@ -9,35 +9,42 @@ public class BasketController : Controller
 {
     private DBContext _context = new DBContext();
     private Users _user;
+    private Orders _currentOrder;
 
     public void LoadUser()
     {
         if(Request.Cookies.ContainsKey("user"))
             _user = JsonConvert.DeserializeObject<Users>(Request.Cookies["user"]);
     }
-
+    
     public IActionResult Index()
     {
         LoadUser();
-        if(_user == null) return RedirectToAction("Index","Profile");
+        if(_user == null) 
+            return RedirectToAction("Index","Profile");
         _context.Products.ToList();
         _context.Baskets.ToList();
         _context.Users.ToList();
-        var listOrders = _context.Orders.Where(o=>o.User == _user).ToList();
+        _currentOrder = _context.Orders.OrderBy(o => o.Id)
+            .LastOrDefault(O => O.User.Id == _user.Id);
+        if (_currentOrder == null)
+            return RedirectToAction("Index","Home");
+        var listBaskets = _context.Baskets.Where(b =>
+            b.Order.Id == _currentOrder.Id).OrderBy(o=>o.Id).ToList();
         ViewBag.AllPrice = 0;
-        foreach (var order in listOrders)
+        foreach (var basket in listBaskets)
         {
-            ViewBag.AllPrice += order.Basket.Product.Price*order.Basket.Count;
+            ViewBag.AllPrice += basket.Product.Price*basket.Count;
         }
-        
-        return View(listOrders);
+        return View(listBaskets);
     }
 
     [HttpPost]
     public IActionResult AddCount(int id)
     {
         var basket = _context.Baskets.FirstOrDefault(b=>b.Id==id);
-        if(basket == null) return RedirectToAction("Index");
+        if(basket == null) 
+            return RedirectToAction("Index");
         basket.Count += 1;
         _context.SaveChanges();
         return RedirectToAction("Index");
@@ -46,8 +53,10 @@ public class BasketController : Controller
     public IActionResult RemoveCount(int id)
     {
         var basket = _context.Baskets.FirstOrDefault(b=>b.Id==id);
-        if(basket == null) return RedirectToAction("Index");
-        if(basket.Count <= 0) return RedirectToAction("Index");
+        if(basket == null) 
+            return RedirectToAction("Index");
+        if(basket.Count <= 1) 
+            return RedirectToAction("Index");
         basket.Count -= 1;
         _context.SaveChanges();
         return RedirectToAction("Index");
@@ -57,10 +66,8 @@ public class BasketController : Controller
     public IActionResult RemoveBasket(int id)
     {
         var basket = _context.Baskets.FirstOrDefault(b=>b.Id==id);
-        if (basket == null) return RedirectToAction("Index");
-        var order = _context.Orders.FirstOrDefault(o => o.Basket.Id == basket.Id);
-        if(order == null) return RedirectToAction("Index");
-        _context.Orders.Remove(order);
+        if (basket == null) 
+            return RedirectToAction("Index");
         _context.Baskets.Remove(basket);
         _context.SaveChanges();
         return RedirectToAction("Index");
@@ -69,7 +76,22 @@ public class BasketController : Controller
     [HttpPost]
     public IActionResult CreateOrder()
     {
-        
+        LoadUser();
+        if(_user == null) 
+            return RedirectToAction("Index","Profile");
+        var order = _context.Orders.OrderBy(o => o.Id)
+            .LastOrDefault(O => O.User.Id == _user.Id);
+        _context.Baskets.ToList();
+        if(order.BasketsList.Count == 0) 
+            return RedirectToAction("Index");
+        order.Status = _context.Statuses.FirstOrDefault(s => s.Id == 3);
+        var newOrder = new Orders()
+        {
+            User = _context.Users.FirstOrDefault(u=>u.Id == _user.Id),
+            Status = _context.Statuses.FirstOrDefault(s => s.Id == 4)
+        };
+        _context.Orders.Add(newOrder);
+        _context.SaveChanges();
         return RedirectToAction("Index");
     }
 }

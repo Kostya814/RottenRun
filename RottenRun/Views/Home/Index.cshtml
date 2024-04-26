@@ -13,15 +13,20 @@
 				<li class="product-wrapper">
 					<a href="" class="product">
 						<div class="product-photo">
-							<img alt="" src="@item.Image"/>
+							<img alt="" src="@item.Image" style="height: 100%"/>
 						</div>
-						<p class="info-text"><strong>@item.Name</strong></p>
-						<div class="price">
-							<span class="price">@item.Price Р</span>
+						
+						<div class="product-info">
+							<span>@item.Name</span>
 						</div>
 						<form method="post">
-							<input id="id" name="id" type="number" value="@item.ID"/>
-							<button class="position-absolute bottom-0 w-100 btn btn-outline-dark btn-lg" type="submit" asp-action="AddToCart">В корзину </button>
+							<input id="id" name="id" type="number" value="@item.Id"/>
+							<div class="bottom-absolute">
+								<div class="product-price">
+									<span class="price">@item.Price ₽</span>
+								</div>
+								<button class="btn-basket btn btn-outline-dark btn-lg" type="submit" asp-action="AddToCart">В корзину </button>
+							</div>
 						</form>
 					</a>
 				</li>

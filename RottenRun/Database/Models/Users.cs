@@ -12,4 +12,5 @@ public class Users
     public Roles Role { get; set; }
     public List<Ratings> RatingsList { get; set; } = new List<Ratings>();
     public List<Orders> OrdersList { get; set; } = new List<Orders>();
+    public List<FavoriteProducts> FavoriteProductsList { get; set; } = new List<FavoriteProducts>();
 }

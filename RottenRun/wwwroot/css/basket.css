@@ -44,10 +44,10 @@
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
+    height: auto;
     text-align: center;
 }
-.btn-pay{
-    
+.btn-pay{    
     width: 100%;
 }
 .pay-container{

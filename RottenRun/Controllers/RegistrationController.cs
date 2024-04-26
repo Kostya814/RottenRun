@@ -32,6 +32,12 @@ public class RegistrationController : Controller
         };
 
         _context.Users.Add(newUser);
+        var order = new Orders()
+        {
+            Status = _context.Statuses.FirstOrDefault(s=>s.Id == 4),
+            User = newUser
+        };
+        _context.Orders.Add(order);      
         _context.SaveChanges();
         return RedirectToAction("Index", "Home");
     }

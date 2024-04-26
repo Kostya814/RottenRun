@@ -50,7 +50,7 @@ namespace RottenRun.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("DeliveryShop.Database.Models.Basket", b =>
+            modelBuilder.Entity("DeliveryShop.Database.Models.Baskets", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,14 +64,19 @@ namespace RottenRun.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ProductID")
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AddressesId");
 
-                    b.HasIndex("ProductID");
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Baskets");
                 });
@@ -91,6 +96,29 @@ namespace RottenRun.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("DeliveryShop.Database.Models.FavoriteProducts", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteProducts");
                 });
 
             modelBuilder.Entity("DeliveryShop.Database.Models.Manufacturers", b =>
@@ -118,10 +146,7 @@ namespace RottenRun.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BasketId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("DeliveryAddressesId")
+                    b.Property<int?>("DeliveryAddressesId")
                         .HasColumnType("integer");
 
                     b.Property<int>("StatusId")
@@ -131,8 +156,6 @@ namespace RottenRun.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BasketId");
 
                     b.HasIndex("DeliveryAddressesId");
 
@@ -145,11 +168,11 @@ namespace RottenRun.Migrations
 
             modelBuilder.Entity("DeliveryShop.Database.Models.Products", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
@@ -172,7 +195,7 @@ namespace RottenRun.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
@@ -189,17 +212,21 @@ namespace RottenRun.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ProductsID")
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("UsersId")
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductsID");
+                    b.HasIndex("ProductId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Ratings");
                 });
@@ -272,34 +299,53 @@ namespace RottenRun.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DeliveryShop.Database.Models.Basket", b =>
+            modelBuilder.Entity("DeliveryShop.Database.Models.Baskets", b =>
                 {
                     b.HasOne("DeliveryShop.Database.Models.Addresses", null)
                         .WithMany("ListBasket")
                         .HasForeignKey("AddressesId");
 
-                    b.HasOne("DeliveryShop.Database.Models.Products", "Product")
-                        .WithMany("ListBasket")
-                        .HasForeignKey("ProductID")
+                    b.HasOne("DeliveryShop.Database.Models.Orders", "Order")
+                        .WithMany("BasketsList")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("DeliveryShop.Database.Models.Products", "Product")
+                        .WithMany("ListBasket")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("DeliveryShop.Database.Models.Orders", b =>
+            modelBuilder.Entity("DeliveryShop.Database.Models.FavoriteProducts", b =>
                 {
-                    b.HasOne("DeliveryShop.Database.Models.Basket", "Basket")
-                        .WithMany("OrdersList")
-                        .HasForeignKey("BasketId")
+                    b.HasOne("DeliveryShop.Database.Models.Products", "Product")
+                        .WithMany("FavoriteProductsList")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DeliveryShop.Database.Models.Addresses", "DeliveryAddresses")
-                        .WithMany("OrdersList")
-                        .HasForeignKey("DeliveryAddressesId")
+                    b.HasOne("DeliveryShop.Database.Models.Users", "User")
+                        .WithMany("FavoriteProductsList")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DeliveryShop.Database.Models.Orders", b =>
+                {
+                    b.HasOne("DeliveryShop.Database.Models.Addresses", "DeliveryAddresses")
+                        .WithMany("OrdersList")
+                        .HasForeignKey("DeliveryAddressesId");
 
                     b.HasOne("DeliveryShop.Database.Models.Statuses", "Status")
                         .WithMany("OrdersList")
@@ -307,19 +353,17 @@ namespace RottenRun.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DeliveryShop.Database.Models.Users", "Users")
+                    b.HasOne("DeliveryShop.Database.Models.Users", "User")
                         .WithMany("OrdersList")
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Basket");
-
                     b.Navigation("DeliveryAddresses");
 
                     b.Navigation("Status");
 
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DeliveryShop.Database.Models.Products", b =>
@@ -339,13 +383,21 @@ namespace RottenRun.Migrations
 
             modelBuilder.Entity("DeliveryShop.Database.Models.Ratings", b =>
                 {
-                    b.HasOne("DeliveryShop.Database.Models.Products", null)
+                    b.HasOne("DeliveryShop.Database.Models.Products", "Product")
                         .WithMany("RatingsList")
-                        .HasForeignKey("ProductsID");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("DeliveryShop.Database.Models.Users", null)
+                    b.HasOne("DeliveryShop.Database.Models.Users", "User")
                         .WithMany("RatingsList")
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DeliveryShop.Database.Models.Users", b =>
@@ -366,11 +418,6 @@ namespace RottenRun.Migrations
                     b.Navigation("OrdersList");
                 });
 
-            modelBuilder.Entity("DeliveryShop.Database.Models.Basket", b =>
-                {
-                    b.Navigation("OrdersList");
-                });
-
             modelBuilder.Entity("DeliveryShop.Database.Models.Categories", b =>
                 {
                     b.Navigation("ProductsList");
@@ -381,8 +428,15 @@ namespace RottenRun.Migrations
                     b.Navigation("ProductsList");
                 });
 
+            modelBuilder.Entity("DeliveryShop.Database.Models.Orders", b =>
+                {
+                    b.Navigation("BasketsList");
+                });
+
             modelBuilder.Entity("DeliveryShop.Database.Models.Products", b =>
                 {
+                    b.Navigation("FavoriteProductsList");
+
                     b.Navigation("ListBasket");
 
                     b.Navigation("RatingsList");
@@ -400,6 +454,8 @@ namespace RottenRun.Migrations
 
             modelBuilder.Entity("DeliveryShop.Database.Models.Users", b =>
                 {
+                    b.Navigation("FavoriteProductsList");
+
                     b.Navigation("OrdersList");
 
                     b.Navigation("RatingsList");

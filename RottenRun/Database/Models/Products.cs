@@ -4,7 +4,7 @@ namespace DeliveryShop.Database.Models;
 
 public class Products
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string Name{ get; set; }
     public string Specifications { get; set; }
     public int Price { get; set; }
@@ -13,5 +13,6 @@ public class Products
     public Categories Category{ get; set; }
     
     public List<Ratings> RatingsList { get; set; } = new List<Ratings>();
-    public List<Basket> ListBasket { get; set; } = new List<Basket>();
+    public List<Baskets> ListBasket { get; set; } = new List<Baskets>();
+    public List<FavoriteProducts> FavoriteProductsList { get; set; } = new List<FavoriteProducts>();
 }

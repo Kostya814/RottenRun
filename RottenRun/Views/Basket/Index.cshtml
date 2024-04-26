@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Home Page";
     var allPrice = ViewBag.AllPrice;
-    List<Orders> list = Model;
+    List<Baskets> list = Model;
 }
 <link href="~/css/basket.css" rel="stylesheet"/>
 <div class="container-body">
@@ -17,19 +17,19 @@
                     {
                         <form method="post" asp-action="RemoveBasket">
                             <div class="item">
-                                <div class="mr-1"><img class="rounded" src="@basket.Basket.Product.Image"  width="100"></div>
+                                <div class="mr-1"><img class="rounded" src="@basket.Product.Image"  width="100"></div>
                                 <div class="item-info">
-                                    <p>@basket.Basket.Product.Name</p>
-                                    <p>@basket.Basket.Product.Specifications</p>
+                                    <p>@basket.Product.Name</p>
+                                    <p>@basket.Product.Specifications</p>
                                 </div>
                                 <div class="div-count">
-                                    <input name="id" style="display: none" value="@basket.Basket.Id">
+                                    <input name="id" style="display: none" value="@basket.Id">
                                     <button class="btn" type="submit" asp-action="RemoveCount" ><i class="icon fa fa-minus fa-1x"></i></button>
-                                    <p><strong>@basket.Basket.Count</strong></p>
+                                    <p><strong>@basket.Count</strong></p>
                                     <button class="btn" type="submit" asp-action="AddCount"><i class="icon fa fa-plus fa-1x"></i></button>
                                 </div>
                                 <div class="item-price">
-                                    <p>@basket.Basket.Product.Price ₽</p>
+                                    <p>@basket.Product.Price ₽</p>
                                 </div>
                                 <button class="btn btnDelete"  type="button" asp-action="RemoveBasket" >
                                     <i class="icon-trash fa fa-trash fa-2x"></i>
@@ -47,7 +47,7 @@
                 <button class="btn btn-outline-dark" style="margin-top: 10px" id="cancelBtn">Отмена</button>
             </div>
         </div>
-        <form style="width: 40%;">
+        <form style="width: 40%;" method="post">
         <div class="pay-container">
             <div class="p-2">
                 <h2>Оплата</h2>
@@ -58,7 +58,7 @@
                     
                 </div>
                 <div class="price-info">
-                    <h4 class="m-3">Стоимсоть товаров</h4>
+                    <h4 class="m-3">Цена</h4>
                     <div class="price">
                         <p>Стоимость продуктов:</p>
                         <span>@allPrice ₽</span>
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="pay-div">
-                <button class="btn btn-outline-dark btn-pay" type="submit" asp-action="">Оформить заказ</button>
+                <button class="btn btn-outline-dark btn-pay" type="submit" asp-action="CreateOrder">Оформить заказ</button>
             </div>
         </div>
         </form>

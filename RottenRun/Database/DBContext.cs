@@ -14,7 +14,7 @@ public class DBContext:DbContext
    
 
     public DbSet<Addresses> Addresses { get; set; }
-    public DbSet<Basket> Baskets { get; set; }
+    public DbSet<Baskets> Baskets { get; set; }
     public DbSet<Categories> Categories { get; set; }
     public DbSet<Manufacturers> Manufacturers { get; set; }
     public DbSet<Orders> Orders { get; set; }
@@ -23,6 +23,8 @@ public class DBContext:DbContext
     public DbSet<Roles> Roles { get; set; }
     public DbSet<Statuses> Statuses { get; set; }
     public DbSet<Users> Users { get; set; }
+    public DbSet<FavoriteProducts> FavoriteProducts { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var config = new ConfigurationBuilder()

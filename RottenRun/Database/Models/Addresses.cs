@@ -7,6 +7,6 @@ public class Addresses
     public string Street { get; set; }
     public string Home { get; set; }
     public int ApartmentNumber { get; set; }
-    public List<Basket> ListBasket { get; set; } = new List<Basket>();
+    public List<Baskets> ListBasket { get; set; } = new List<Baskets>();
     public List<Orders> OrdersList { get; set; } = new List<Orders>();
 }

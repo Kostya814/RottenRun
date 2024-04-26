@@ -54,32 +54,30 @@ public class HomeController : Controller
     public IActionResult AddToCart(int id)
     {
         LoadUser();
-        if(user == null) return RedirectToAction("Index");
+        if(user == null) 
+            return RedirectToAction("Index");
         var existingProduct = context.Products.Find(id);
-        if(existingProduct == null)  return RedirectToAction("Index");
-        Basket basket = new Basket();
+        if(existingProduct == null)  
+            return RedirectToAction("Index");
+        context.Baskets.ToList();
+        context.Products.ToList();
+        Baskets basket = new Baskets();
+        var orderUser = context.Orders.OrderBy(o=>o.Id).LastOrDefault(o => o.User.Id == user.Id);
+        if (orderUser == null) 
+            orderUser = new Orders()
+            {
+                User = context.Users.FirstOrDefault(u=>u.Id==user.Id), 
+                Status = context.Statuses.FirstOrDefault(s=>s.Id == 4)
+            };
+        foreach (var orderBasket in orderUser.BasketsList)
+        {
+            if(existingProduct.Id == orderBasket.Product.Id) 
+                return RedirectToAction("Index");
+        }
         basket.Product = existingProduct;
         basket.Count += 1;
-        context.Products.ToList();
-        context.Baskets.ToList();
-        context.Users.ToList();
-        List<Orders> listOrders = context.Orders.Where(o => o.User == user).ToList();
-        foreach (var orders in listOrders)
-        {
-            if (orders.Basket.Product.ID != existingProduct.ID)
-                continue;
-            orders.Basket.Count += 1;
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        basket.Order = orderUser;
         context.Baskets.Add(basket);
-        var order = new Orders()
-        {
-            UsersId = user.Id,
-            Status = context.Statuses.FirstOrDefault(),
-            Basket = basket
-        };
-        context.Orders.Add(order);
         context.SaveChanges();
         return RedirectToAction("Index");
     }
