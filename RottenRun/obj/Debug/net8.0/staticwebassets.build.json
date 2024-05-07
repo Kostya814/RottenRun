@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qSQ/EeNLr3iEIcwvB6xnglikDtylsJYcTU78wNoOJK0=",
+  "Hash": "yMuSonuaFrd2xaJoi7OB6p1wKl1aIBt96GT2sy694ZY=",
   "Source": "RottenRun",
   "BasePath": "_content/RottenRun",
   "Mode": "Default",
@@ -112,6 +112,25 @@
       "OriginalItemSpec": "wwwroot\\css\\log.css"
     },
     {
+      "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\order.css",
+      "SourceId": "RottenRun",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\",
+      "BasePath": "_content/RottenRun",
+      "RelativePath": "css/order.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\order.css"
+    },
+    {
       "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\profile.css",
       "SourceId": "RottenRun",
       "SourceType": "Discovered",
@@ -205,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\basket.js"
+    },
+    {
+      "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\js\\order.js",
+      "SourceId": "RottenRun",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\",
+      "BasePath": "_content/RottenRun",
+      "RelativePath": "js/order.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\order.js"
     },
     {
       "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\js\\site.js",

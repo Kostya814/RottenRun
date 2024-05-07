@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\log.css"
     },
     {
+      "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\order.css",
+      "PackagePath": "staticwebassets\\css\\order.css"
+    },
+    {
       "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\profile.css",
       "PackagePath": "staticwebassets\\css\\profile.css"
     },
@@ -35,6 +39,10 @@
     {
       "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\js\\basket.js",
       "PackagePath": "staticwebassets\\js\\basket.js"
+    },
+    {
+      "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\js\\order.js",
+      "PackagePath": "staticwebassets\\js\\order.js"
     },
     {
       "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\js\\site.js",

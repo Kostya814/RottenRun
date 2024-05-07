@@ -146,6 +146,9 @@ namespace RottenRun.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int?>("DeliveryAddressesId")
                         .HasColumnType("integer");
 

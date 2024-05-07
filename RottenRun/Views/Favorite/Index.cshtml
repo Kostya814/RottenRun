@@ -1,0 +1,50 @@
+﻿@using DeliveryShop.Database.Models
+@{
+    ViewData["Title"] = "Home Page";
+    List<Products> list = Model;
+}
+<link href="~/css/index.css" rel="stylesheet"/>
+<div class="main">
+    <h1>Избранное</h1>
+    @{
+        if (list.Count == 0)
+        {
+            <div class="non-info">
+                <span>В избраннаном ничего нет</span>
+            </div>
+        }
+    }
+    <ul class="products clearfix">
+        @{
+           
+            foreach (var item in list)
+        {
+        <form method="post">
+            <li class="product-wrapper">
+                <a class="product" >
+                    <div class="product-photo">
+                        <div class="container-favorite">
+                            <button class="icon-button" type="submit" asp-action="RemoveToFavorite">
+                                <i class="fa fa-heart fa-2x icon-favorite" style="color: red" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <img alt="" src="@item.Image" style="height: 100%"/>
+                    </div>
+                    <div class="product-info">
+                        <span>@item.Name</span>
+                    </div>
+                    <input id="id" name="id" type="number" value="@item.Id"/>
+                    <div class="bottom-absolute">
+                        <div class="product-price">
+                            <span class="price">@item.Price ₽</span>
+                        </div>
+                        <button class="btn-basket btn btn-outline-dark btn-lg" type="submit" asp-action="AddToCart">В корзину </button>
+                    </div>
+                </a>
+            </li>
+        </form>
+        }
+        }
+    </ul>
+</div>
+<script src="~/js/basket.js"></script>

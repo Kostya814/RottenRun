@@ -8,6 +8,7 @@ namespace RottenRun.Controllers;
 public class ProfileController : Controller
 {
     private DBContext _context= new DBContext();
+    private Users user;
     public IActionResult Index()
     {
         if (Request.Cookies.ContainsKey("user"))
@@ -17,6 +18,11 @@ public class ProfileController : Controller
         }
         return RedirectToAction("Log");
 
+    }
+    public void LoadUser()
+    {
+        if(Request.Cookies.ContainsKey("user"))
+            user = JsonConvert.DeserializeObject<Users>(Request.Cookies["user"]);
     }
     [HttpGet]
     public IActionResult Log()

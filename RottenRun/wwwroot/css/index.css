@@ -21,6 +21,26 @@
         width: 25%;
     }
 }
+.icon-button {
+    background: none; 
+    border: none; 
+    padding: 0; 
+}
+.non-info{
+    margin: auto;
+}
+.icon-button:hover .icon-favorite {
+    color: red;
+}
+.main-container{
+    
+}
+.container-favorite{
+    z-index: 1;
+    position: absolute;
+    top:2%;
+    right: 2%;
+}
 .bottom-absolute{
     position: absolute;
     bottom: 0;
@@ -28,7 +48,7 @@
     width: 100%;
 }
 .btn-basket{
-    bottom: 0;
+    margin-bottom: 5%;
     width: 90%;
     left: 5%;
 }

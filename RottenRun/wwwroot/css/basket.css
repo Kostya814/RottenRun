@@ -85,7 +85,7 @@
     }
 }
 .item{
-    border-top: dashed black;    
+    border-top:2px dashed black;    
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;

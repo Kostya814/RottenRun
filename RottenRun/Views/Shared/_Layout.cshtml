@@ -1,5 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using DeliveryShop.Database.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Newtonsoft.Json
+<!DOCTYPE html>
 <html lang="en">
+@{
+    Users _user = null;
+    if(Context.Request.Cookies.ContainsKey("user"))
+        _user = JsonConvert.DeserializeObject<Users>(Context.Request.Cookies["user"]);
+}
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,20 +15,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/RottenRun.styles.css" asp-append-version="true"/>
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" asp-append-version="true">
+    <link href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet" asp-append-version="true">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" asp-append-version="true">
-    </head>
+</head>
 <body>
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RottenRun</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+                <ul class="navbar-nav flex-grow-1 header-list">
                     <li class="nav-item">
                         <div class="nav-link d1">
                             <form class="form-search" method="get" asp-controller="Home" asp-action="Index">
@@ -36,15 +39,15 @@
                     </li>
                     <li class="main_c nav-item">
                     <a class="nav-link text-dark favorite-container" asp-controller="Basket" asp-action="Index">
-                        <p>Корзина</p>
-                        <i class="icon fa fa-shopping-basket fa-2x"></i>
+                        <p class="mb-0">Корзина</p>
+                        <i class="icon fa fa-shopping-basket fa-2x mt-0"></i>
                     </a>
-                    <a class="nav-link text-dark favorite-container" asp-controller="Home" asp-action="Privacy">
-                        <p>Избранное</p>
+                    <a class="nav-link text-dark favorite-container mt-0" asp-controller="Favorite" asp-action="Index">
+                        <p class="mb-0">Избранное</p>
                         <i class="icon fa fa-heart fa-2x"></i>
                     </a>
-                    <a class="nav-link text-dark favorite-container" onclick="clickProfile()">
-                        <p>Профиль</p>
+                    <a class="nav-link text-dark favorite-container mt-0" onclick="clickProfile()">
+                        <p class="mb-0">Профиль</p>
                         <i class="icon fa fa-user fa-2x"></i>
                     </a>
                 </ul>
@@ -54,18 +57,34 @@
 </header>
 <div id="containerProfile" class="container-profile" style="height: 80vh">
     <div class="profile-modal">
-            <form class="modal-content-profile" id="contentProfile" method="get">
-                <button class="btn btn-outline-secondary" type="submit">
-                    <i class="fa fa-user">
-                    </i>
-                      Аккаунт
-                </button>
-                <button class="btn btn-outline-secondary" type="submit" >
-                    <i class="fa fa-barcode" style="margin-right:4px ">
-                    </i>Заказы
-                </button>
-                <button class="btn btn-outline-dark" type="submit" asp-action="LogOut" asp-controller="Profile">Выйти</button>
-            </form>
+        @{
+            if (_user != null)
+            {
+                <form class="modal-content-profile" id="contentProfile" method="get">
+                    <div class="profile-info">
+                        <span class="span-name" >@_user.Name</span>
+                        <span class="span-email">@_user.Email</span>
+                    </div>
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fa fa-user">
+                        </i>
+                        Аккаунт
+                    </button>
+                    <button class="btn btn-outline-secondary" type="submit" asp-action="Index" asp-controller="Order">
+                        <i class="fa fa-barcode" style="margin-right:4px ">
+                        </i>Заказы
+                    </button>
+                    <button class="btn btn-outline-dark" type="submit" asp-action="LogOut" asp-controller="Profile">Выйти</button>
+                </form>
+            }
+            else
+            {
+                <form class="modal-content-profile" id="contentProfile" method="get">
+                    <button class="btn btn-outline-dark" type="submit" asp-action="Log" asp-controller="Profile">Войти</button>
+                </form>
+            }
+        }
+        
     </div>
 </div>
 <div class="container mt-3" style="height: 80vh">

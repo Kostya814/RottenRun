@@ -28,25 +28,29 @@ public class HomeController : Controller
         if(Request.Cookies.ContainsKey("user"))
             user = JsonConvert.DeserializeObject<Users>(Request.Cookies["user"]);
     }
-
-    public IActionResult Index()
-    {
-        LoadUser();
-        context.Categories.ToList();
-        var ListProducts = context.Products.ToList();
-        return View(context.Products.ToList());
-    }
     [HttpGet]
     public IActionResult Index(string textSearch)
     {
-        var ListProducts = context.Products.ToList();
+        LoadUser();
+        context.Categories.ToList();
+        context.Products.ToList();
+        context.FavoriteProducts.ToList();
+        context.Users.ToList();
+        var listProducts = context.Products.ToList();
+        foreach (var product in listProducts)
+        {
+            if(user==null)
+                break;
+            if (product.FavoriteProductsList.FirstOrDefault(u=>u.User.Id==user.Id) != null)
+                product.IsLike = true;
+        }
         if (ModelState.IsValid)
         {
             context.Categories.ToList();
-            var findSerch = ListProducts.FindAll(u => u.Name.Contains(textSearch)).ToList();
-            return View(findSerch);
+            var findSearch = listProducts.FindAll(u => u.Name.Contains(textSearch)).ToList();
+            return View(findSearch);
         }
-        return View(ListProducts);
+        return View(listProducts);
         
     }
 
@@ -55,7 +59,7 @@ public class HomeController : Controller
     {
         LoadUser();
         if(user == null) 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Profile");
         var existingProduct = context.Products.Find(id);
         if(existingProduct == null)  
             return RedirectToAction("Index");
@@ -81,7 +85,44 @@ public class HomeController : Controller
         context.SaveChanges();
         return RedirectToAction("Index");
     }
-
+    [HttpPost]
+    public IActionResult AddToFavorite(int id)
+    {
+        LoadUser();
+        context.Products.ToList();
+        context.Users.ToList();
+        if(user == null) 
+            return RedirectToAction("Index","Profile");
+        var existingProduct = context.Products.Find(id);
+        if(existingProduct == null)  
+            return RedirectToAction("Index");
+        var favoriteProduct = context.FavoriteProducts.FirstOrDefault(f => f.User.Id == user.Id && f.Product.Id == existingProduct.Id);
+        if (favoriteProduct != null) 
+            return RedirectToAction("Index");
+        context.FavoriteProducts.Add(new FavoriteProducts()
+        {
+            User = context.Users.FirstOrDefault(u=>u.Id == user.Id),
+            Product = existingProduct
+        });
+        context.SaveChanges();
+        return RedirectToAction("Index");
+    }
+    public IActionResult RemoveToFavorite(int id)
+    {
+        LoadUser();
+        context.Products.ToList();
+        context.Users.ToList();
+        if(user == null) 
+            return RedirectToAction("Index","Profile");
+        var existingProduct = context.Products.Find(id);
+        if(existingProduct == null)  
+            return RedirectToAction("Index");
+        var favoriteProduct = context.FavoriteProducts.FirstOrDefault(f => f.User.Id == user.Id && f.Product.Id == existingProduct.Id);
+        if (favoriteProduct == null) return RedirectToAction("Index");
+        context.Remove(favoriteProduct);
+        context.SaveChanges();
+        return RedirectToAction("Index");
+    }
     public IActionResult Privacy()
     {
         return View();

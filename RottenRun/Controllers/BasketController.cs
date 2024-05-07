@@ -85,6 +85,7 @@ public class BasketController : Controller
         if(order.BasketsList.Count == 0) 
             return RedirectToAction("Index");
         order.Status = _context.Statuses.FirstOrDefault(s => s.Id == 3);
+        order.CreationDate = DateTime.UtcNow;
         var newOrder = new Orders()
         {
             User = _context.Users.FirstOrDefault(u=>u.Id == _user.Id),

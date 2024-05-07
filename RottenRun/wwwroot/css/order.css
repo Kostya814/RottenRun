@@ -2,3 +2,34 @@
    height: 100%;
     width: 100%;
 }
+.order{
+    padding: 1%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: stretch;
+    align-items: center;
+    gap: 10%;
+}
+.address-delivery{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.address-delivery span{
+    width: 100%;
+    text-align: center;
+}
+.list-order{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    overflow-y: auto;
+    height: 90%;
+}
+.main-container{
+    height: 100%;
+}
+    

@@ -2,11 +2,47 @@
 @{
     ViewData["Title"] = "Home Page";
     var allPrice = ViewBag.AllPrice;
-    List<Baskets> list = Model;
+    List<Orders> list = Model;
 }
 <link href="~/css/order.css" rel="stylesheet"/>
 <div class="container-body">
-    
-    
-   
+    <div class="main-container">
+        <h1>Заказы</h1>
+        <div class="list-order">
+            @{
+                foreach (var o in list)
+                {
+                    <div class="order">
+                        <div class="number">
+                            <span>@Convert.ToInt32(list.IndexOf(o)+1)</span>
+                        </div>
+                        <div class="date">
+                            <span>@o.CreationDate.Value.ToString("dd/MM/yyyy")</span>
+                        </div>
+                        <div class="status">
+                            <span>@o.Status.Name</span>
+                        </div>
+                        <div class="address-delivery">
+                            @{
+                                if (o.DeliveryAddresses != null)
+                                {
+                                    <span>@o.DeliveryAddresses.GetAddress</span>
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
+                            }
+                        </div>
+                        <div class="allPricer">
+                            @{o.CountPrice();}
+                            <span>@o.AllPrice ₽</span>
+                        </div>
+                        
+                    </div>
+                }
+            }
+        </div>
+    </div>
 </div>
+<script src="~/js/order.js"></script>
