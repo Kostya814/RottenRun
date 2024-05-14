@@ -20,7 +20,8 @@ public class RegistrationController : Controller
     [HttpPost]
     public IActionResult Reg(string login, string password,string email, string name, string repeatPassword)
     {
-        if (password != repeatPassword) return RedirectToAction("Reg");
+        if (password != repeatPassword) 
+            return RedirectToAction("Reg");
         
         var newUser = new Users()
         {   
