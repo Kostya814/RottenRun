@@ -18,13 +18,27 @@ public class OrderController : Controller
         _context.Baskets.ToList();
         _context.Statuses.ToList();
         _context.Addresses.ToList();
+        _context.Products.ToList();
         var orderList = _context.Orders.Where(order =>  order.User.Id == user.Id).ToList();
         foreach (var order in orderList)
         {
-            order.CountPrice();;
+           order.CountPrice();
         }
         return View(orderList);
     }
+
+    public IActionResult OpenOrder(int id)
+    {
+        _context.Baskets.ToList();
+        _context.Products.ToList();
+        _context.Addresses.ToList();
+        _context.Statuses.ToList();
+        var order = _context.Orders.FirstOrDefault(o => o.Id == id);
+        if (order == null)
+            return RedirectToAction("Index");
+        return View(order);
+    }
+
     public void LoadUser()
     {
         if(Request.Cookies.ContainsKey("user"))

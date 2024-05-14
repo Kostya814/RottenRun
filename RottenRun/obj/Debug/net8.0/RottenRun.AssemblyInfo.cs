@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RottenRun")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56cbf40cee0d33d1017d649f601abac507fef02b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a220ba1d88fee75abfa25d16df343f2cb541832")]
 [assembly: System.Reflection.AssemblyProductAttribute("RottenRun")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RottenRun")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

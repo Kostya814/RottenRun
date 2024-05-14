@@ -18,11 +18,12 @@ public class Orders
 
     public void CountPrice()
     {
-        
         foreach (var basket in BasketsList)
         {
             AllPrice += basket.Product.Price;
         }
+
+        AllPrice += 500;
     }
 
 }

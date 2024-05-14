@@ -1,0 +1,48 @@
+﻿@using DeliveryShop.Database.Models
+@{
+    ViewData["Title"] = "Home Page";
+    Orders order = Model;
+}
+<link href="~/css/order.css" rel="stylesheet"/>
+<link href="~/css/basket.css" rel="stylesheet"/>
+<div class="container-body">
+    <div class="container-main">
+        @{
+            if (order.DeliveryAddresses != null)
+            {
+                <h1>Заказ от @order.CreationDate </h1>
+                <h2>Адрес доставки - @order.DeliveryAddresses.GetAddress</h2>
+                <h2>Статус - @order.Status.Name</h2>
+            }
+            else
+            {
+                <h1>Заказ от @order.CreationDate </h1>
+                <h2>Адрес доставки - </h2>
+                <h2>Статус - @order.Status.Name</h2>
+            }
+        }
+        <div class="composition-order">
+            <div class="list-basket" id="listbasket">
+                @{
+                    foreach (var basket in order.BasketsList)
+                    {
+                        <div class="item">
+                            <div class="mr-1"><img class="rounded" src="@basket.Product.Image" width="100"></div>
+                            <div class="item-info">
+                                <p>@basket.Product.Name</p>
+                                <p>@basket.Product.Specifications</p>
+                            </div>
+                            <div class="div-count">
+                                <p><strong>@basket.Count</strong></p>
+                            </div>
+                            <div class="item-price">
+                                <p>@basket.Product.Price ₽</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>   
+</div>
+<script src="~/js/order.js"></script>

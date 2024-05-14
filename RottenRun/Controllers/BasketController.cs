@@ -1,4 +1,5 @@
-﻿using DeliveryShop.Database;
+﻿using System.Text.Json;
+using DeliveryShop.Database;
 using DeliveryShop.Database.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -25,10 +26,12 @@ public class BasketController : Controller
         _context.Products.ToList();
         _context.Baskets.ToList();
         _context.Users.ToList();
+        _context.Addresses.ToList();
         _currentOrder = _context.Orders.OrderBy(o => o.Id)
             .LastOrDefault(O => O.User.Id == _user.Id);
         if (_currentOrder == null)
             return RedirectToAction("Index","Home");
+        ViewBag.currentOrder = _currentOrder;
         var listBaskets = _context.Baskets.Where(b =>
             b.Order.Id == _currentOrder.Id).OrderBy(o=>o.Id).ToList();
         ViewBag.AllPrice = 0;
@@ -94,5 +97,31 @@ public class BasketController : Controller
         _context.Orders.Add(newOrder);
         _context.SaveChanges();
         return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public IActionResult AddDeliveryAddress([FromBody]JsonElement json)
+    {
+        if(!ModelState.IsValid)
+            return RedirectToAction("Index");
+        var address = json.Deserialize<string>();
+        var addressPaths = address.Split(",");
+        string city = addressPaths[0];
+        string street = addressPaths[1];
+        string home = addressPaths[2];
+        LoadUser();
+        if(_user == null) 
+            return RedirectToAction("Index","Profile");
+        var order = _context.Orders.OrderBy(o => o.Id)
+            .LastOrDefault(O => O.User.Id == _user.Id);
+        order.DeliveryAddresses = new Addresses()
+        {
+            City = city,
+            Street = street,
+            Home = home,
+            ApartmentNumber = 1
+        };
+        _context.SaveChanges();
+        return RedirectToAction("Index","Basket");
     }
 }

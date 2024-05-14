@@ -17,6 +17,9 @@
     justify-content: center;
     align-content: center;
 }
+.date span{
+    text-align: center;
+}
 .address-delivery span{
     width: 100%;
     text-align: center;
@@ -27,7 +30,7 @@
     justify-content: space-between;
     gap: 10px;
     overflow-y: auto;
-    height: 90%;
+    max-height: 90%;
 }
 .main-container{
     height: 100%;

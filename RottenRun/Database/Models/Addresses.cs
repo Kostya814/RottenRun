@@ -9,5 +9,5 @@ public class Addresses
     public int ApartmentNumber { get; set; }
     public List<Baskets> ListBasket { get; set; } = new List<Baskets>();
     public List<Orders> OrdersList { get; set; } = new List<Orders>();
-    public string GetAddress => "г."+City + " ул." + Street + " д." + Home + " кв." +ApartmentNumber;
+    public string GetAddress => "г."+City + " " + Street + " д." + Home + " кв." +ApartmentNumber;
 }

@@ -3,8 +3,11 @@
     ViewData["Title"] = "Home Page";
     var allPrice = ViewBag.AllPrice;
     List<Baskets> list = Model;
+    Orders order = ViewBag.currentOrder;
 }
 <link href="~/css/basket.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
 <div class="container-body">
     <div class="main-container">
         <div class="basket-container">
@@ -70,12 +73,21 @@
                         <p>Скидка</p>
                         <span>-500₽</span>
                     </div>
-                    <div class="price">
-                        <a href="https://yandex.ru/maps">
-                            <span>
-                                Выбрать адрес
-                            </span>
-                        </a>
+                    <div class="div-delivery-address">
+                        @{
+                            if (order.DeliveryAddresses != null)
+                            {
+                                <p>Адрес доставки - @order.DeliveryAddresses.GetAddress</p>
+                            }
+                            else
+                            {
+                                
+                                <p>Адрес доставки - <strong>не выбран</strong></p>
+                            }
+                        }
+                        <button class="btn btn-outline-dark" id="btnOpenMap" type="button">
+                            <span>Выбрать адрес доставки</span>
+                        </button>
                     </div>
                     <div class="full-price">
                         <p>Итого к оплате: </p>
@@ -89,5 +101,29 @@
         </div>
         </form>
     </div>
-    <script src="~/js/basket.js"></script>
+    
 </div>
+<div class="map-container" id="mapContainer">
+    <div class="map">
+        <button class="btn btn-close" onclick="CloseMap()">
+        </button>
+        <div class="info-address">            
+            <div class="city-info">
+                <label><span>Адрес доставки - </span></label>
+                <label id="inputCity"></label>
+            </div>
+            <div class="street-info">
+                <label id="inputStreet"></label>
+            </div>
+            <div class="home-info">
+                <label id="inputHome"></label>
+            </div>
+        </div>
+        <div id="map"></div>
+        <button class="btn btn-outline-dark" onclick="saveAddress()">Сохранить</button>
+    </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script src="~/js/basket.js"></script>

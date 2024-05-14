@@ -9,37 +9,67 @@
     <div class="main-container">
         <h1>Заказы</h1>
         <div class="list-order">
+            <div class="order" style="background-color: whitesmoke">
+                <div class="number">
+                    <span>№</span>
+                </div>
+                <div class="date">
+                    <span>Дата создания</span>
+                </div>
+                <div class="status">
+                    <span>Статус заказа</span>
+                </div>
+                <div class="address-delivery">
+                    <span>Адрес доставки</span>
+                </div>
+                <div class="allPricer">
+                    <span>Общая цена</span>
+                </div>
+            </div>
             @{
                 foreach (var o in list)
                 {
-                    <div class="order">
-                        <div class="number">
-                            <span>@Convert.ToInt32(list.IndexOf(o)+1)</span>
-                        </div>
-                        <div class="date">
-                            <span>@o.CreationDate.Value.ToString("dd/MM/yyyy")</span>
-                        </div>
-                        <div class="status">
-                            <span>@o.Status.Name</span>
-                        </div>
-                        <div class="address-delivery">
-                            @{
-                                if (o.DeliveryAddresses != null)
-                                {
-                                    <span>@o.DeliveryAddresses.GetAddress</span>
-                                }
-                                else
-                                {
-                                    <span>-</span>
-                                }
-                            }
-                        </div>
-                        <div class="allPricer">
-                            @{o.CountPrice();}
-                            <span>@o.AllPrice ₽</span>
-                        </div>
-                        
-                    </div>
+                    <form method="get" asp-action="OpenOrder" style="width: 100%">
+                        <input value="@o.Id" name="id" style="display: none"/>
+                        <button class="btn" type="submit" style="width: 100%">
+                            <div class="order">
+                                <div class="number">
+                                    <span>@Convert.ToInt32(list.IndexOf(o) + 1)</span>
+                                </div>
+                                <div class="date">
+                                    @{
+                                        if (o.CreationDate != null)
+                                        {
+                                            <span>@o.CreationDate.Value.ToString("dd/MM/yyyy")</span>
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    }
+
+                                </div>
+                                <div class="status">
+                                    <span>@o.Status.Name</span>
+                                </div>
+                                <div class="address-delivery">
+                                    @{
+                                        if (o.DeliveryAddresses != null)
+                                        {
+                                            <span>@o.DeliveryAddresses.GetAddress</span>
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    }
+                                </div>
+                                <div class="allPricer">
+                                    <span>@o.AllPrice ₽</span>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
                 }
             }
         </div>
