@@ -2,6 +2,6 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=DD20F326_002DD084_002D4010_002D80F3_002DBEA62A4950D8_002Fd_003AViews_002Fd_003AProfile_002Ff_003AIndex_002Ecshtml/@EntryIndexedValue">ExplicitlyExcluded</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=54bf78ac_002D4b9c_002D4047_002Da338_002D95981e4d57d9/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::6C1D8E0D-8C50-41F6-9B8A-C7EF49551507::net8.0::TestProject1.UnitTest1.Test1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B9B4E63B-081B-465A-B71B-BCD3874B2F61::net8.0::TestProject1.UnitTest1&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -111,3 +111,4 @@ C:\Users\Kostya\RiderProjects\RottenRun\TestProject1\bin\Debug\net8.0\Npgsql.dll
 C:\Users\Kostya\RiderProjects\RottenRun\TestProject1\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\Kostya\RiderProjects\RottenRun\TestProject1\bin\Debug\net8.0\RottenRun.dll
 C:\Users\Kostya\RiderProjects\RottenRun\TestProject1\bin\Debug\net8.0\RottenRun.pdb
+C:\Users\Kostya\RiderProjects\RottenRun\TestProject1\obj\Debug\net8.0\TestProject1.sourcelink.json

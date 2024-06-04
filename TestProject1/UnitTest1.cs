@@ -32,36 +32,27 @@ public class UnitTest1
         Assert.Equal(user.Password, findUser.Password);
 
     }
-    public void Index_RedirectsToLogOut_WhenUserCookieExists()
+    [Fact]
+    public void LogOut_Test()
     {
         // Arrange
-        var mockHttpContext = new Mock<HttpContext>();
-        var mockHttpRequest = new Mock<HttpRequest>();
-        var mockHttpResponse = new Mock<HttpResponse>();
-
-        
-        var user = new Users { };
-        var userJson = JsonConvert.SerializeObject(user);
-
-        mockHttpContext.Setup(c => c.Request).Returns(mockHttpRequest.Object);
-        mockHttpContext.Setup(c => c.Response).Returns(mockHttpResponse.Object);
-        mockHttpRequest.Setup(r => r.Cookies.ContainsKey("user")).Returns(true);
-        mockHttpRequest.Setup(r => r.Cookies["user"]).Returns(userJson);
-
-        var controller = new ProfileController()
+        var controller = new ProfileController();
+        var httpContext = new DefaultHttpContext();
+        httpContext.Response.Cookies.Append("user", "someUser");
+        controller.ControllerContext = new ControllerContext()
         {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = mockHttpContext.Object
-            }
+            HttpContext = httpContext
         };
 
         // Act
-        var result = controller.Index();
+        var result = controller.LogOut("a") as RedirectToActionResult;
 
         // Assert
-        Assert.IsType<RedirectToActionResult>(result);
-        var redirectToActionResult = result as RedirectToActionResult;
-        Assert.Equal("LogOut", redirectToActionResult.ActionName);
+        Assert.NotNull(result);
+        Assert.Equal("Home", result.ControllerName);
+        Assert.Equal("Index", result.ActionName);
+        Assert.False(httpContext.Request.Cookies.ContainsKey("user"));
     }
 }
+
+    

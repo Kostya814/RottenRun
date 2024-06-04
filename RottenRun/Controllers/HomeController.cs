@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.Json;
 using DeliveryShop.Database;
 using DeliveryShop.Database.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ public class HomeController : Controller
             user = JsonConvert.DeserializeObject<Users>(Request.Cookies["user"]);
     }
     [HttpGet]
-    public IActionResult Index(string textSearch)
+    public IActionResult Index()
     {
         LoadUser();
         context.Categories.ToList();
@@ -44,14 +45,7 @@ public class HomeController : Controller
             if (product.FavoriteProductsList.FirstOrDefault(u=>u.User.Id==user.Id) != null)
                 product.IsLike = true;
         }
-        if (ModelState.IsValid)
-        {
-            context.Categories.ToList();
-            var findSearch = listProducts.FindAll(u => u.Name.Contains(textSearch)).ToList();
-            return View(findSearch);
-        }
         return View(listProducts);
-        
     }
 
     [HttpPost]

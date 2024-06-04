@@ -26,8 +26,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Kostya/RiderProjects/RottenRun/RottenRun/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Kostya/RiderProjects/RottenRun/RottenRun/Views/Basket/Index.cshtml]
@@ -44,6 +42,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Kostya/RiderProjects/RottenRun/RottenRun/Views/Order/OpenOrder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3Blbk9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostya/RiderProjects/RottenRun/RottenRun/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Kostya/RiderProjects/RottenRun/RottenRun/Views/Profile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Kostya/RiderProjects/RottenRun/RottenRun/Views/Profile/Log.cshtml]

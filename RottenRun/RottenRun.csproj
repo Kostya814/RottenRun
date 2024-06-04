@@ -2158,4 +2158,11 @@
       <AdditionalFiles Include="Views\Home\Privacy.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="Views\Product\source\logo.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

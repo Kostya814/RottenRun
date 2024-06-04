@@ -1,0 +1,47 @@
+﻿.panel{
+    background-color: white;
+    margin:  auto;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    height: 80%;
+    padding-top: 10%;
+    border-radius: 3px;
+}
+.info-product{
+    display: flex;
+    flex-direction: column;
+}
+.picture{
+    height: 100%;
+    width: 50%;
+}
+.picture img{
+    width: 50%;
+}
+.main-container{
+    height: 100%;
+    width: 100%;
+}
+.main{
+    height: 100%;
+}
+.price-buttons{
+    
+}
+.item-info
+{
+    gap: 100px;
+    display: flex;
+    flex-direction: row;
+    
+}
+.icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+.icon-button:hover .icon-favorite {
+    color: red;
+}

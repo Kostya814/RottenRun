@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yMuSonuaFrd2xaJoi7OB6p1wKl1aIBt96GT2sy694ZY=",
+  "Hash": "uyQjYFPCAto5rsCMXvPcdMe/gVPzcsVuEwK1BT2LCx0=",
   "Source": "RottenRun",
   "BasePath": "_content/RottenRun",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\order.css"
+    },
+    {
+      "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\product.css",
+      "SourceId": "RottenRun",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\",
+      "BasePath": "_content/RottenRun",
+      "RelativePath": "css/product.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\product.css"
     },
     {
       "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\profile.css",
@@ -1345,6 +1364,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\source\\logo.png",
+      "SourceId": "RottenRun",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\",
+      "BasePath": "_content/RottenRun",
+      "RelativePath": "source/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\source\\logo.png"
     }
   ]
 }

@@ -13,8 +13,7 @@ public class ProfileController : Controller
     {
         if (Request.Cookies.ContainsKey("user"))
         {
-            Users? user = JsonConvert.DeserializeObject<Users>(Request.Cookies["user"]);
-            return RedirectToAction("LogOut");
+           return View();
         }
         return RedirectToAction("Log");
 

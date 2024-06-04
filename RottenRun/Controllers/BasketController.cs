@@ -20,6 +20,7 @@ public class BasketController : Controller
     
     public IActionResult Index()
     {
+        
         LoadUser();
         if(_user == null) 
             return RedirectToAction("Index","Profile");

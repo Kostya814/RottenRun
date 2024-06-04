@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RottenRun", "RottenRun\RottenRun.csproj", "{DD20F326-D084-4010-80F3-BEA62A4950D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject2", "TestProject2\TestProject2.csproj", "{5A80395B-1A8D-4585-BB8E-739BADAB704E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{B9B4E63B-081B-465A-B71B-BCD3874B2F61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{DD20F326-D084-4010-80F3-BEA62A4950D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD20F326-D084-4010-80F3-BEA62A4950D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD20F326-D084-4010-80F3-BEA62A4950D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A80395B-1A8D-4585-BB8E-739BADAB704E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A80395B-1A8D-4585-BB8E-739BADAB704E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A80395B-1A8D-4585-BB8E-739BADAB704E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A80395B-1A8D-4585-BB8E-739BADAB704E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9B4E63B-081B-465A-B71B-BCD3874B2F61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9B4E63B-081B-465A-B71B-BCD3874B2F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9B4E63B-081B-465A-B71B-BCD3874B2F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9B4E63B-081B-465A-B71B-BCD3874B2F61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

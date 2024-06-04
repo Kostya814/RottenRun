@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\order.css"
     },
     {
+      "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\product.css",
+      "PackagePath": "staticwebassets\\css\\product.css"
+    },
+    {
       "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\css\\profile.css",
       "PackagePath": "staticwebassets\\css\\profile.css"
     },
@@ -275,6 +279,10 @@
     {
       "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Kostya\\RiderProjects\\RottenRun\\RottenRun\\wwwroot\\source\\logo.png",
+      "PackagePath": "staticwebassets\\source\\logo.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.RottenRun.Microsoft.AspNetCore.StaticWebAssets.props",

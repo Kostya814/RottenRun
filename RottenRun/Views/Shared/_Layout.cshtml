@@ -24,14 +24,10 @@
         <div class="container-fluid">
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1 header-list">
-                    <li class="nav-item">
-                        <div class="nav-link d1">
-                            <form class="form-search" method="get" asp-controller="Home" asp-action="Index">
-                                <input id="searchText" name="textSearch" required type="text" placeholder="Искать здесь...">
-                                <button class="btn btn-dark" type="submit">
-                                    <span class="fa fa-search "></span>
-                                </button>
-                            </form >
+                    <img src="source/logo.png" width="60rem"></img>
+                    <li class="nav-item" style="width: 15%">
+                        <div class="nav-link d1" >
+                            <input id="searchText" name="textSearch"  type="text" placeholder="Искать здесь...">
                         </div>
                     </li>
                     <li class="nav-item">
@@ -65,7 +61,7 @@
                         <span class="span-name" >@_user.Name</span>
                         <span class="span-email">@_user.Email</span>
                     </div>
-                    <button class="btn btn-outline-secondary" type="submit">
+                    <button class="btn btn-outline-secondary" type="submit" asp-action="Index" asp-controller="Profile">
                         <i class="fa fa-user">
                         </i>
                         Аккаунт
