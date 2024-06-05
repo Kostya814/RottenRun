@@ -36,3 +36,22 @@ function filterDivs() {
         }
     }
 }
+var btnEdit = document.getElementById("btnEdit");
+btnEdit.addEventListener("click",function (event)
+{
+    var profileDiv = document.getElementById("profile");
+    var inputs = document.getElementsByClassName("form-control");
+    for (i = 0; i < inputs.length; i++) {
+        if(btnEdit.textContent === "Редактировать")
+        {
+            inputs[i].removeAttribute("readonly");
+            btnEdit.textContent = "Сохранить изменения";
+        }    
+        else
+        {
+            var form = document.getElementsByClassName("form-button");
+            form[0].submit();
+        }
+    }
+    
+})

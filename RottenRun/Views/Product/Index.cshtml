@@ -20,34 +20,31 @@
 					<span>@product.Specifications</span>
 				</div>
 				<div class="item-info">
-					<span>Цена </span>
-					<span>@product.Price</span>
-				</div>
-				<div class="item-info">
 					<span>Категория </span>
 					<span>@product.Category.Name</span>
 				</div>
 				<form class="price-buttons" asp-controller="Product">
-					<input value="@product.Id" name="id" style="display: none"/><div class="container-favorite">
-						@{
+					<div class="product-price">
+						<span class="price">@product.Price ₽</span>
+					</div>
+					<input value="@product.Id" name="id" style="display: none"/>
+					@{
 						if (product.IsLike)
 						{
-						<button class="icon-button" type="submit" formmethod="post" asp-action="RemoveToFavorite">
-							<i class="fa fa-heart fa-2x icon-favorite" style="color: red" aria-hidden="true"></i>
-						</button>
+							<button class="icon-button" type="submit" formmethod="post" asp-action="RemoveToFavorite">
+								<i class="fa fa-heart fa-2x icon-favorite" style="color: red" aria-hidden="true"></i>
+							</button>
 						}
 						else
 						{
-						<button class="icon-button" type="submit" formmethod="post"  asp-action="AddToFavorite">
-							<i class="fa fa-heart fa-2x icon-favorite" aria-hidden="true"></i>
-						</button>
+							<button class="icon-button" type="submit" formmethod="post" asp-action="AddToFavorite">
+								<i class="fa fa-heart fa-2x icon-favorite" aria-hidden="true"></i>
+							</button>
 						}
-						}
-					</div>
+					}
 					<button class="btn-basket btn btn-outline-dark btn-lg" formmethod="get" asp-action="AddToCart">В корзину</button>
 				</form>
 			</div>
-			
 		</div>
 	</div>
 </div>

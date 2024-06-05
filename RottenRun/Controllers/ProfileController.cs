@@ -11,11 +11,10 @@ public class ProfileController : Controller
     private Users user;
     public IActionResult Index()
     {
-        if (Request.Cookies.ContainsKey("user"))
-        {
-           return View();
-        }
-        return RedirectToAction("Log");
+        LoadUser();
+        if (user == null)
+            return RedirectToAction("Log");
+        return View(user);
 
     }
     public void LoadUser()

@@ -2,9 +2,23 @@
 @{
     Users user = Model;
 }
-<link href="css/index.css" rel="stylesheet" />
+<link href="~/css/log.css" rel="stylesheet" />
 <div class="main">
+	<h2>Профиль</h2>
 	<div class="main-container">
-		<h1>Прифиль</h1>
+		<div class="profile" id="profile">
+			<label class="form-label" >Логин</label>
+			<input name="login" class="form-control" value="@user.Login" required readonly/>
+			<label class="form-label" >Пароль</label>
+			<input name="password" class="form-control" value="@user.Password" required readonly/>
+			<label class="form-label">Имя</label>
+			<input name="name" class="form-control" value="@user.Name" required readonly/>
+			<label class="form-label">Почта</label>
+			<input name="enail" class="form-control" value="@user.Email" required readonly/>
+			<form class="form-button" asp-action="" asp-controller="Profile">
+				<input name="id" value="@user.Id" style="display: none"/>
+				<button class="btn btn-outline-dark" id="btnEdit">Редактировать</button>
+			</form>
+		</div>
 	</div>
 </div>

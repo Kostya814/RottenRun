@@ -12,14 +12,18 @@ public class ProductController : Controller
     public IActionResult Index(int id)
     {
         LoadUser();
+        
         db.FavoriteProducts.ToList();
         db.Categories.ToList();
         db.Users.ToList();
         if (!ModelState.IsValid)
             return RedirectToAction("Index", "Home");
         var product = db.Products.FirstOrDefault(p => p.Id == id);
-        if (product.FavoriteProductsList.FirstOrDefault(u=>u.User.Id==user.Id) != null)
-            product.IsLike = true;
+        if (user != null)
+        {
+            if (product.FavoriteProductsList.FirstOrDefault(u=>u.User.Id==user.Id) != null)
+                product.IsLike = true;
+        }
         if(product == null)
             return RedirectToAction("Index", "Home");
         return View(product);

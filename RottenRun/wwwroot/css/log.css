@@ -8,3 +8,17 @@
     padding: 30px;
     background-color: white;
 }
+.profile{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    gap: 10%;
+}
+.form-button{
+    margin-top: 10px;
+}
+.form-button button{
+    width: 100%;
+}

@@ -2155,7 +2155,6 @@
 
     <ItemGroup>
       <AdditionalFiles Include="Views\Home\Index.cshtml" />
-      <AdditionalFiles Include="Views\Home\Privacy.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
