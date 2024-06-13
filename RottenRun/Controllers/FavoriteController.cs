@@ -64,6 +64,8 @@ public class FavoriteController : Controller
         basket.Count += 1;
         basket.Order = orderUser;
         _context.Baskets.Add(basket);
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Товар {existingProduct.Name} добавлен в корзину";
         _context.SaveChanges();
         return RedirectToAction("Index");
     }
@@ -82,6 +84,8 @@ public class FavoriteController : Controller
         if (favoriteProduct == null) return RedirectToAction("Index");
         _context.Remove(favoriteProduct);
         _context.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Товар {existingProduct.Name} убран из избранное";
         return RedirectToAction("Index");
     }
 }

@@ -35,4 +35,12 @@
 .main-container{
     height: 100%;
 }
-    
+.item-info{
+    overflow: hidden;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: start;
+    gap: 10%;
+}

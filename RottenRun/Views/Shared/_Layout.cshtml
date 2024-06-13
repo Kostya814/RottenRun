@@ -83,13 +83,20 @@
         
     </div>
 </div>
+<div class="div-notify" id="divNotify">
+    <h4>@TempData["TitleNotification"]</h4>
+    <span>@TempData["Notification"]</span>
+</div>
 <div class="container mt-3" style="height: 80vh">
     <main role="main" class="pb-3" style="height: 100%">
         @RenderBody()
     </main>
 </div>
-
-
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2024 - RottenRun
+    </div>
+</footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>

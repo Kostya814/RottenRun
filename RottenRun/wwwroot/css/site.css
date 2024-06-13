@@ -108,15 +108,33 @@ html {
 .icon:hover {
   color: #0a53be;
 }
-
-
 .icon1:hover {
   color: red;
 }
-
 .main_c {
   margin-left: auto;
   display: flex;
 }
-
+.div-notify{
+  width: 20%;
+  padding: 4px;
+  border: solid 1px;
+  background-color: white;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  bottom:20px;
+  right: 10px;
+  z-index: 1;
+}
+.fade-out {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+.hidden {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
 

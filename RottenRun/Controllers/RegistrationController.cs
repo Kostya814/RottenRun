@@ -40,6 +40,8 @@ public class RegistrationController : Controller
         };
         _context.Orders.Add(order);      
         _context.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"ПОльзователь {newUser.Name} зарегестрирован";
         return RedirectToAction("Index", "Home");
     }
 }

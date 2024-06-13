@@ -12,7 +12,6 @@ public class ProductController : Controller
     public IActionResult Index(int id)
     {
         LoadUser();
-        
         db.FavoriteProducts.ToList();
         db.Categories.ToList();
         db.Users.ToList();
@@ -41,7 +40,7 @@ public class ProductController : Controller
             return RedirectToAction("Index","Profile");
         var existingProduct = db.Products.Find(id);
         if(existingProduct == null)  
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = id });
         db.Baskets.ToList();
         db.Products.ToList();
         Baskets basket = new Baskets();
@@ -54,14 +53,19 @@ public class ProductController : Controller
             };
         foreach (var orderBasket in orderUser.BasketsList)
         {
-            if(existingProduct.Id == orderBasket.Product.Id) 
-                return RedirectToAction("Index");
+            if (existingProduct.Id != orderBasket.Product.Id)
+                continue;
+            TempData["TitleNotification"] = "Успешно";
+            TempData["Notification"] = $"Товар {existingProduct.Name} уже в корзине";
+            return RedirectToAction("Index", new { id = id });
         }
         basket.Product = existingProduct;
         basket.Count += 1;
         basket.Order = orderUser;
         db.Baskets.Add(basket);
         db.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Товар {existingProduct.Name} добавлен в корзину";
         return RedirectToAction("Index", new { id = id });
     }
     [HttpPost]
@@ -74,16 +78,18 @@ public class ProductController : Controller
             return RedirectToAction("Index","Profile");
         var existingProduct = db.Products.Find(id);
         if(existingProduct == null)  
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = id });
         var favoriteProduct = db.FavoriteProducts.FirstOrDefault(f => f.User.Id == user.Id && f.Product.Id == existingProduct.Id);
         if (favoriteProduct != null) 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = id });
         db.FavoriteProducts.Add(new FavoriteProducts()
         {
             User = db.Users.FirstOrDefault(u=>u.Id == user.Id),
             Product = existingProduct
         });
         db.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Товар {existingProduct.Name} добавлен в избранное";
         return RedirectToAction("Index", new { id = id });
     }
     public IActionResult RemoveToFavorite(int id)
@@ -95,11 +101,13 @@ public class ProductController : Controller
             return RedirectToAction("Index","Profile");
         var existingProduct = db.Products.Find(id);
         if(existingProduct == null)  
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = id });
         var favoriteProduct = db.FavoriteProducts.FirstOrDefault(f => f.User.Id == user.Id && f.Product.Id == existingProduct.Id);
         if (favoriteProduct == null) return RedirectToAction("Index");
         db.Remove(favoriteProduct);
         db.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Товар {existingProduct.Name} убран из избранное";
         return RedirectToAction("Index", new { id = id });
     }
 }

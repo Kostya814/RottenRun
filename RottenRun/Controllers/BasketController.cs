@@ -123,6 +123,8 @@ public class BasketController : Controller
             ApartmentNumber = 1
         };
         _context.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Адрес успешно добавлен";
         return RedirectToAction("Index","Basket");
     }
 }

@@ -33,7 +33,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         LoadUser();
-        context.Categories.ToList();
+        var listCategories = context.Categories.ToList();
         context.Products.ToList();
         context.FavoriteProducts.ToList();
         context.Users.ToList();
@@ -45,6 +45,7 @@ public class HomeController : Controller
             if (product.FavoriteProductsList.FirstOrDefault(u=>u.User.Id==user.Id) != null)
                 product.IsLike = true;
         }
+        ViewBag.Categorits = listCategories;
         return View(listProducts);
     }
 
@@ -69,14 +70,19 @@ public class HomeController : Controller
             };
         foreach (var orderBasket in orderUser.BasketsList)
         {
-            if(existingProduct.Id == orderBasket.Product.Id) 
-                return RedirectToAction("Index");
+            if (existingProduct.Id != orderBasket.Product.Id)
+                continue;
+            TempData["TitleNotification"] = "Успешно";
+            TempData["Notification"] = $"Товар {existingProduct.Name} уже в корзине";
+            return RedirectToAction("Index");
         }
         basket.Product = existingProduct;
         basket.Count += 1;
         basket.Order = orderUser;
         context.Baskets.Add(basket);
         context.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Товар {existingProduct.Name} добавлен в корзину";
         return RedirectToAction("Index");
     }
     [HttpPost]
@@ -99,8 +105,11 @@ public class HomeController : Controller
             Product = existingProduct
         });
         context.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Товар {existingProduct.Name} добавлен в избранное";
         return RedirectToAction("Index");
     }
+    [HttpPost]
     public IActionResult RemoveToFavorite(int id)
     {
         LoadUser();
@@ -115,6 +124,8 @@ public class HomeController : Controller
         if (favoriteProduct == null) return RedirectToAction("Index");
         context.Remove(favoriteProduct);
         context.SaveChanges();
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = $"Товар {existingProduct.Name} убран из избранное";
         return RedirectToAction("Index");
     }
     public IActionResult Privacy()

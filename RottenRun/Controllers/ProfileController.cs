@@ -35,7 +35,8 @@ public class ProfileController : Controller
             Users? user = _context.Users.FirstOrDefault(p => p.Login == login && p.Password == password);
             if(user == null) return RedirectToAction("Index");
                 Response.Cookies.Append("user",JsonConvert.SerializeObject(user));
-            
+                TempData["TitleNotification"] = "Успешно";
+                TempData["Notification"] = "Вход успешно осуществлен";
         }
         return RedirectToAction("Index","Home");
     }
@@ -48,6 +49,34 @@ public class ProfileController : Controller
     public IActionResult LogOut(string name)
     {
         Response.Cookies.Delete("user");
-        return RedirectToAction("Index", "Home");
+        TempData["TitleNotification"] = "Успешно";
+        TempData["Notification"] = "Выход успешно осуществлен";
+        return RedirectToAction("Index", "Home");        
+    }
+    [HttpPost]
+    public IActionResult EditUser(int id ,string login , string password,string name , string email)
+    {
+        if(!ModelState.IsValid)
+            return RedirectToAction("Index");
+        var editUser = _context.Users.FirstOrDefault(u => u.Id == id);
+        if(editUser == null)
+            return RedirectToAction("Index");
+        try
+        {
+            editUser.Login = login;
+            editUser.Password = password;
+            editUser.Name = name;
+            editUser.Email = email;
+            _context.SaveChanges();
+            TempData["TitleNotification"] = "Успешно";
+            TempData["Notification"] = "Данные текущего пользователя успешно изменены";
+        }
+        catch (Exception e)
+        {
+           
+        }
+        Response.Cookies.Delete("user");
+        Response.Cookies.Append("user",JsonConvert.SerializeObject(editUser));
+        return RedirectToAction("Index");
     }
 }

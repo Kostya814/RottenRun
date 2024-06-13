@@ -7,17 +7,17 @@
 	<h2>Профиль</h2>
 	<div class="main-container">
 		<div class="profile" id="profile">
-			<label class="form-label" >Логин</label>
-			<input name="login" class="form-control" value="@user.Login" required readonly/>
-			<label class="form-label" >Пароль</label>
-			<input name="password" class="form-control" value="@user.Password" required readonly/>
-			<label class="form-label">Имя</label>
-			<input name="name" class="form-control" value="@user.Name" required readonly/>
-			<label class="form-label">Почта</label>
-			<input name="enail" class="form-control" value="@user.Email" required readonly/>
-			<form class="form-button" asp-action="" asp-controller="Profile">
+			<form class="form-button" asp-action="EditUser" asp-controller="Profile" method="post">
+				<label class="form-label" >Логин</label>
+				<input name="login" class="form-control" value="@user.Login" required readonly/>
+				<label class="form-label" >Пароль</label>
+				<input name="password" class="form-control" value="@user.Password" required readonly/>
+				<label class="form-label">Имя</label>
+				<input name="name" class="form-control" value="@user.Name" required readonly/>
+				<label class="form-label">Почта</label>
+				<input name="email" class="form-control" value="@user.Email" required readonly/>
 				<input name="id" value="@user.Id" style="display: none"/>
-				<button class="btn btn-outline-dark" id="btnEdit">Редактировать</button>
+				<button class="btn btn-outline-dark" id="btnEdit" type="button">Редактировать</button>
 			</form>
 		</div>
 	</div>
